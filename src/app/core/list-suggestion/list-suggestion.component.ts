@@ -4,58 +4,60 @@ import { Suggestion } from '../../models/suggestion';
 @Component({
   selector: 'app-list-suggestion',
   templateUrl: './list-suggestion.component.html',
-  styleUrl: './list-suggestion.component.css'
+  styleUrls: ['./list-suggestion.component.css']
 })
 export class ListSuggestionComponent {
 
-    searchTerm: string = '';
-    favorites: Suggestion[] = [];
+  searchText: string = '';
+  favorites: Suggestion[] = [];
 
- suggestions: Suggestion[] = [
+  suggestions: Suggestion[] = [
     {
       id: 1,
       title: 'Organiser une journée team building',
-      description: 'Suggestion pour organiser une journée de team building pour renforcer les liens entre les membres de l’équipe.',
+      description: 'Suggestion pour organiser une journée de team building.',
       category: 'Événements',
       date: new Date('2025-01-20'),
-      status: 'acceptée',
+      status: 'acceptee',
       nbLikes: 10
     },
     {
       id: 2,
       title: 'Améliorer le système de réservation',
-      description: 'Proposition pour améliorer la gestion des réservations en ligne avec un système de confirmation automatique.',
+      description: 'Proposition pour améliorer la gestion des réservations.',
       category: 'Technologie',
       date: new Date('2025-01-15'),
-      status: 'refusée',
+      status: 'refusee',
       nbLikes: 0
     },
     {
       id: 3,
       title: 'Créer un système de récompenses',
-      description: 'Mise en place d’un programme de récompenses pour motiver les employés et reconnaître leurs efforts.',
+      description: 'Programme de récompenses pour motiver les employés.',
       category: 'Ressources Humaines',
       date: new Date('2025-01-25'),
-      status: 'refusée',
-      nbLikes: 5
+      status: 'refusee',
+      nbLikes: 0
     },
-
     {
-id: 4,
-title: 'Moderniser linterface utilisateur',
-description: 'Refonte complète de linterface utilisateur pour une meilleure expérienceutilisateur.',
-category: 'Technologie',
-date: new Date('2025-01-30'),
-status: 'en_attente',
-nbLikes:0
-}
-
+      id: 4,
+      title: 'Moderniser l\'interface utilisateur',
+      description: 'Refonte complète de l\'UI.',
+      category: 'Technologie',
+      date: new Date('2025-01-30'),
+      status: 'en_attente',
+      nbLikes: 0
+    }
   ];
 
+  get filteredSuggestions() {
+    return this.suggestions.filter(s =>
+      s.title.toLowerCase().includes(this.searchText.toLowerCase()) ||
+      s.category.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
 
-
-
-   likeSuggestion(s: Suggestion) {
+  likeSuggestion(s: Suggestion) {
     s.nbLikes++;
   }
 
@@ -63,13 +65,13 @@ nbLikes:0
     if (!this.favorites.includes(s)) {
       this.favorites.push(s);
     }
-     console.log('Added to favorites:', s);
   }
 
-  filteredSuggestions(): Suggestion[] {
-    return this.suggestions.filter(s =>
-      s.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      s.category.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  getStatusClass(status: string) {
+    switch (status) {
+      case 'acceptee': return 'badge-success';
+      case 'refusee': return 'badge-danger';
+      default: return 'badge-warning';
+    }
   }
 }

@@ -1,97 +1,98 @@
-/* Conteneur */
 .container {
-  max-width: 920px;
+  max-width: 900px;
   margin: auto;
+  padding: 20px;
 }
 
-/* Carte moderne */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
 .card {
   background: #ffffff;
-  border: none;
-  border-radius: 16px;
-  margin-bottom: 22px;
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.06),
-    0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: all 0.25s ease;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.1),
-    0 4px 10px rgba(0, 0, 0, 0.06);
+  transform: translateY(-5px);
 }
 
-/* Corps */
-.card-body {
-  padding: 28px 32px;
+.meta {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 10px;
 }
 
-/* Titre */
-.card-body h5 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1f2d3d;
-  margin-bottom: 6px;
+.category {
+  font-weight: 500;
+  margin-right: 10px;
 }
 
-/* Meta infos */
-.card-body small {
-  display: block;
-  font-size: 0.8rem;
-  color: #6b7280;
-  margin-bottom: 14px;
-}
-
-/* Description */
-.card-body p {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #374151;
-  margin-bottom: 14px;
-}
-
-/* Badges modernes */
 .badge {
-  font-size: 0.65rem;
-  padding: 6px 14px;
-  border-radius: 999px;
-  letter-spacing: 0.4px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
-/* Boutons */
+.badge-success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge-danger {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.badge-warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
 .actions {
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  margin-top: 15px;
 }
 
-.actions .btn {
-  font-size: 0.8rem;
-  padding: 6px 14px;
-  border-radius: 999px;
-  transition: all 0.2s ease;
-}
-
-/* Like */
-.actions .btn-primary {
-  background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+.btn {
+  padding: 8px 14px;
   border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 13px;
+  transition: 0.3s;
 }
 
-.actions .btn-primary:hover {
-  transform: scale(1.05);
+.like {
+  background: #007bff;
+  color: white;
 }
 
-/* Favoris */
-.actions .btn-outline-secondary {
-  border-color: #d1d5db;
-  color: #374151;
+.like:hover {
+  background: #0056b3;
 }
 
-.actions .btn-outline-secondary:hover {
-  background-color: #f3f4f6;
+.fav {
+  background: #f1f1f1;
 }
 
+.fav:hover {
+  background: #ddd;
+}

@@ -1,29 +1,43 @@
-    <div *ngFor="let s of filteredSuggestions()" class="card mb-3">
-  <div class="card-body">
+<div class="container">
+  <h2 class="title">💡 Liste des suggestions</h2>
 
-    <h5>{{ s.title }}</h5>
+  
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Rechercher par titre ou catégorie..."
+    [(ngModel)]="searchText"
+  />
 
-    <small>
-      <strong>{{ s.category }}</strong> · {{ s.date | date:'dd MMM yyyy' }}
-    </small>
+  
+  <div *ngFor="let s of filteredSuggestions" class="card">
+
+    
+    <h3>{{ s.title }}</h3>
+
+    <div class="meta">
+      <span class="category">{{ s.category }}</span>
+      <span class="date">{{ s.date | date:'dd MMM yyyy' }}</span>
+    </div>
 
     <p>{{ s.description }}</p>
 
-    <span *ngIf="s.status === 'acceptee'" class="badge bg-success">ACCEPTÉE</span>
-    <span *ngIf="s.status === 'refusee'" class="badge bg-danger">REFUSÉE</span>
-    <span *ngIf="s.status === 'en_attente'" class="badge bg-warning">EN ATTENTE</span>
+    
+    <span class="badge" [ngClass]="getStatusClass(s.status)">
+      {{ s.status }}
+    </span>
 
-    <div *ngIf="s.status !== 'refusee'" class="actions">
-      <button class="btn btn-primary" (click)="likeSuggestion(s)">
+    <div class="actions" *ngIf="s.status !== 'refusee'">
+
+      <!-- Event binding -->
+      <button class="btn like" (click)="likeSuggestion(s)">
         👍 Like {{ s.nbLikes }}
       </button>
 
-      <button class="btn btn-outline-secondary" (click)="addToFavorites(s)">
+      <button class="btn fav" (click)="addToFavorites(s)">
         ⭐ Ajouter aux favoris
       </button>
-    </div>
 
+    </div>
   </div>
 </div>
-
-
