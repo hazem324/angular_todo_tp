@@ -37,7 +37,9 @@
       <button class="btn fav" (click)="addToFavorites(s)">
         ⭐ Ajouter aux favoris
       </button>
-
+      <button [routerLink]="[s.id]">
+         Details
+      </button>
     </div>
   </div>
 </div>
