@@ -8,7 +8,9 @@
     placeholder="Rechercher par titre ou catégorie..."
     [(ngModel)]="searchText"
   />
-
+<button routerLink="/suggestions/addSuggestion" class="btn btn-primary">
+  Ajouter suggestion
+</button>
   
   <div *ngFor="let s of filteredSuggestions" class="card">
 
